@@ -60,3 +60,10 @@ def test_rover_can_move_around_obstacle():
     curiosity = MarsRover(grid)
     curiosity.execute("MMMMMMRMLMMLMRM")
     assert curiosity.get_location() == "0:6:N"
+
+
+def test_rover_can_wrap_around_different_sized_grids():
+    grid = Grid(5, 8)
+    curiosity = MarsRover(grid)
+    curiosity.execute("LMLM")
+    assert curiosity.get_location() == "4:7:S"

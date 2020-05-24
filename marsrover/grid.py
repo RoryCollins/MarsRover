@@ -17,8 +17,8 @@ class Grid:
             self.__blocked = True
         else:
             self.__blocked = False
-            self.__position.X = position.X % 10
-            self.__position.Y = position.Y % 10
+            self.__position.X = position.X % self.__x_length
+            self.__position.Y = position.Y % self.__y_length
 
     def __str__(self) -> str:
         return "O:{}".format(self.__position) if self.__blocked else "{}".format(self.__position)
