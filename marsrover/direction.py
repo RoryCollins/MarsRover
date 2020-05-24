@@ -31,8 +31,8 @@ class North(Direction):
     def turn_right(self):
         return East()
 
-    def move(self, current_position):
-        return Position(current_position.X, current_position.Y+1)
+    def move(self, grid):
+        grid.move_to(Position(grid.get_position().X, grid.get_position().Y + 1))
 
 
 class West(Direction):
@@ -45,8 +45,8 @@ class West(Direction):
     def turn_right(self):
         return North()
 
-    def move(self, current_position):
-        return Position(current_position.X-1, current_position.Y)
+    def move(self, grid):
+        grid.move_to(Position(grid.get_position().X - 1, grid.get_position().Y))
 
 
 class East(Direction):
@@ -59,8 +59,8 @@ class East(Direction):
     def turn_right(self):
         return South()
 
-    def move(self, current_position):
-        return Position(current_position.X+1, current_position.Y)
+    def move(self, grid):
+        grid.move_to(Position(grid.get_position().X + 1, grid.get_position().Y))
 
 
 class South(Direction):
@@ -73,5 +73,5 @@ class South(Direction):
     def turn_right(self):
         return West()
 
-    def move(self, current_position):
-        return Position(current_position.X, current_position.Y-1)
+    def move(self, grid):
+        grid.move_to(Position(grid.get_position().X, grid.get_position().Y - 1))

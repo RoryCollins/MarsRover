@@ -4,13 +4,13 @@ from marsrover.position import Position
 
 
 class MarsRover:
-    def __init__(self):
-        self.bearing = North()
-        self.position = Position(0, 0)
+    def __init__(self, grid):
+        self.direction = North()
         self.commands = {"L": LeftCommand(), "R": RightCommand(), "M": MoveCommand()}
+        self.grid = grid
 
     def get_location(self):
-        return "{}:{}".format(self.position, self.bearing)
+        return "{}:{}".format(self.grid, self.direction)
 
     def execute(self, command_list):
         self.validate(command_list)
@@ -23,10 +23,10 @@ class MarsRover:
                 raise ValueError
 
     def turn_left(self):
-        self.bearing = self.bearing.turn_left()
+        self.direction = self.direction.turn_left()
 
     def turn_right(self):
-        self.bearing = self.bearing.turn_right()
+        self.direction = self.direction.turn_right()
 
     def move(self):
-        self.position = self.bearing.move(self.position)
+        self.direction.move(self.grid)
